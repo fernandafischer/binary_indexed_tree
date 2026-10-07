@@ -32,3 +32,10 @@ The internal layout is the canonical 1-indexed Fenwick array; the public API tra
 ## Edge cases
 
 `prefix_sum(-1)` returns 0 so you can compute `range_sum(left, right)` as `prefix_sum(right) - prefix_sum(left - 1)` without special-casing `left == 0`. `range_sum` with `left > right` returns 0 rather than raising. Integer indices are type-checked; `bool` is rejected even though it is a subclass of `int`, because passing `True` as an index is almost always a bug.
+
+## Design notes
+
+The window stores values eagerly rather than keeping running aggregates. Running
+sums drift with floating point over long streams, and recomputing from a small
+buffer is cheap enough that the drift is not worth the speed.
+
