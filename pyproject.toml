@@ -1,6 +1,6 @@
 [project]
 name = "binary-indexed-tree"
-version = "0.1.0"
+version = "0.1.1"
 description = "Computes prefix sums and point updates on an array in logarithmic time."
 requires-python = ">=3.10"
 dependencies = []
